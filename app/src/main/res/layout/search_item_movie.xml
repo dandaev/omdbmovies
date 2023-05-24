@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/search_items_radius"
+    app:cardUseCompatPadding="true"
+    android:layout_marginHorizontal="4dp"
+    app:cardElevation="@dimen/search_cardElevation">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/movieLogo"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:src="@drawable/movie_default"
+            android:scaleType="fitCenter"
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="@string/movie_default_title"
+                android:textSize="20sp"
+                android:layout_weight="2"
+                tools:ignore="NestedWeights"
+                android:gravity="center"
+                android:textColor="@color/black"
+                style="@style/TextAppearance.AppCompat.Light.SearchResult.Title"/>
+
+            <TextView
+                android:id="@+id/year"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="@string/movie_default_year"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                android:gravity="center"
+                style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"/>
+
+
+        </LinearLayout>
+        
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
