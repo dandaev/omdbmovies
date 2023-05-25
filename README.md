@@ -1,2 +1,2 @@
 # omdbmovies
-This is a test android project, which shows my skilset
+This is a test **Android** project, which shows my skilset
