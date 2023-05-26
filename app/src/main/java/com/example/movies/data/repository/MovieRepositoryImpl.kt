@@ -1,5 +1,6 @@
 package com.example.movies.data.repository
 
+import com.example.movies.common.Constants
 import com.example.movies.data.remote.OmdbMovieApi
 import com.example.movies.data.remote.dto.MovieDetailDto
 import com.example.movies.data.remote.dto.MovieListDto
@@ -11,7 +12,7 @@ class MovieRepositoryImpl @Inject constructor(
 ) : MovieRepository {
 
     override suspend fun getMoviesByTitle(title: String): MovieListDto {
-        return api.getMoviesByTitle(title)
+        return api.getMoviesByTitle(Constants.API_KEY,title)
     }
 
     override suspend fun getMovieById(omdbId: String): MovieDetailDto {

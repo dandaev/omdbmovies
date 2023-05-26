@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movies.databinding.SearchItemMovieBinding
+import com.example.movies.domain.model.Movie
 
 class MovieSearchAdapter(private val movies: List<Movie>) :
     RecyclerView.Adapter<MovieSearchViewHolder>() {

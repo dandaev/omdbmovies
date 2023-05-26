@@ -1,5 +1,7 @@
 package com.example.movies.data.remote.dto
 
+import com.example.movies.domain.model.MovieDetail
+
 data class MovieDetailDto(
     val Actors: String,
     val Awards: String,
@@ -14,7 +16,7 @@ data class MovieDetailDto(
     val Poster: String,
     val Production: String,
     val Rated: String,
-    val Ratings: List<Rating>,
+    val Ratings: List<RatingDto>,
     val Released: String,
     val Response: String,
     val Runtime: String,
@@ -27,3 +29,24 @@ data class MovieDetailDto(
     val imdbRating: String,
     val imdbVotes: String
 )
+
+fun MovieDetailDto.toMovieDeatail(): MovieDetail {
+    return MovieDetail(
+        actors = Actors,
+        awards = Awards,
+        country = Country,
+        director = Director,
+        language = Language,
+        genre = Genre,
+        plot = Plot,
+        poster = Poster,
+        released = Released,
+        runtime = Runtime,
+        title = Title,
+        type = Type,
+        year = Year,
+        imdbID = imdbID,
+        imdbRating = imdbRating,
+        imdbVotes = imdbVotes
+    )
+}
