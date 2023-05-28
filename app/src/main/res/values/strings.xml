@@ -3,6 +3,7 @@
     <string name="searchViewText">Search movie…</string>
     <string name="movie_default_title">Moovie</string>
     <string name="movie_default_year">2023</string>
+    <string name="movie_default_type">series</string>
     <string name="search_warning_text_empty">Tap to search</string>
     <string name="search_warning_not_found">Movie not found</string>
     <string name="search_warning_too_many">Too many results </string>

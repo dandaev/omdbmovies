@@ -1,4 +1,4 @@
-package com.example.movies
+package com.example.movies.presentation.movie_search.components
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -23,6 +23,7 @@
             android:layout_weight="1"/>
 
         <LinearLayout
+            android:padding="20dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
@@ -34,21 +35,43 @@
                 android:layout_height="0dp"
                 android:text="@string/movie_default_title"
                 android:textSize="20sp"
-                android:layout_weight="2"
+                android:layout_weight="5"
                 tools:ignore="NestedWeights"
-                android:gravity="center"
+                android:gravity="start"
+                android:padding="@dimen/default_movie_search_padding"
                 android:textColor="@color/black"
                 style="@style/TextAppearance.AppCompat.Light.SearchResult.Title"/>
 
-            <TextView
-                android:id="@+id/year"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:text="@string/movie_default_year"
-                android:textSize="16sp"
-                android:layout_weight="1"
-                android:gravity="center"
-                style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"/>
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/type"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/movie_default_type"
+                    android:textSize="14sp"
+                    android:layout_weight="1"
+                    android:padding="@dimen/default_movie_search_padding"
+                    android:gravity="start"
+                    style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"/>
+
+                <TextView
+                    android:id="@+id/year"
+                    android:layout_width="0dp"
+                    android:padding="@dimen/default_movie_search_padding"
+                    android:layout_height="match_parent"
+                    android:text="@string/movie_default_year"
+                    android:textSize="14sp"
+                    android:layout_weight="4"
+                    android:gravity="start"
+                    style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"/>
+            </LinearLayout>
+
+
 
 
         </LinearLayout>

@@ -4,7 +4,6 @@ package com.example.movies.common
     const val BASE_URL = "https://www.omdbapi.com/"
     const val API_KEY = "d7fd1eeb"
 
-
-    const val PARAM_MOVIE_ID = "imdbID"
+    const val PARAM_MOVIE_ID = "movieId"
     const val PARAM_MOVIE_SEARCH_TITLE = "title"
 }

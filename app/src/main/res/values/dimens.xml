@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="search_items_radius">8dp</dimen>
-    <dimen name="search_cardElevation">12dp</dimen>
+    <dimen name="search_items_radius">4dp</dimen>
+    <dimen name="search_cardElevation">8dp</dimen>
+    <dimen name="default_movie_search_padding">2dp</dimen>
 </resources>

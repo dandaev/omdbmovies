@@ -1,8 +1,9 @@
-package com.example.movies
+package com.example.movies.presentation.movie_search.components
 
 import android.content.Context
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.movies.R
 import com.example.movies.databinding.SearchItemMovieBinding
 import com.example.movies.domain.model.Movie
 import com.squareup.picasso.Picasso
@@ -14,8 +15,11 @@ class MovieSearchViewHolder(
 {
     fun bindMovie(movie: Movie)
     {
-        Picasso.get().load(movie.poster).placeholder(ContextCompat.getDrawable(context, R.drawable.movie_default)!!).error(ContextCompat.getDrawable(context, R.drawable.movie_default)!!).into(searchItemMovieBinding.movieLogo)
+        Picasso.get().load(movie.poster).placeholder(ContextCompat.getDrawable(context,
+            R.drawable.movie_default
+        )!!).error(ContextCompat.getDrawable(context, R.drawable.movie_default)!!).into(searchItemMovieBinding.movieLogo)
         searchItemMovieBinding.title.text = movie.title
         searchItemMovieBinding.year.text = movie.year
+        searchItemMovieBinding.type.text = movie.type
     }
 }
