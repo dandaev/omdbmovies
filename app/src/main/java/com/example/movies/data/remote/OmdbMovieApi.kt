@@ -13,6 +13,6 @@ interface OmdbMovieApi {
     @GET("/")
     suspend fun getMoviesByTitle(@Query("apikey")apiKey: String, @Query("s") title: String): MovieListDto
 
-    @GET("&s={imdbId}")
-    suspend fun getMovieById(@Path("imdbId") imdbId: String): MovieDetailDto
+    @GET("/")
+    suspend fun getMovieById(@Query("apikey")apiKey: String, @Query("i") imdbId: String): MovieDetailDto
 }

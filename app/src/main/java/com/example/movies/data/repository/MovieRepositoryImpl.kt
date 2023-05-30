@@ -16,6 +16,6 @@ class MovieRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getMovieById(omdbId: String): MovieDetailDto {
-        return api.getMovieById(omdbId)
+        return api.getMovieById(Constants.API_KEY, omdbId)
     }
 }
