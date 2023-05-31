@@ -6,8 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="@dimen/search_items_radius"
     app:cardUseCompatPadding="true"
-    android:layout_marginHorizontal="4dp"
-    app:cardElevation="@dimen/search_cardElevation"
+    app:cardElevation="3dp"
     android:id="@+id/cardView">
 
     <LinearLayout
@@ -21,7 +20,7 @@
             android:layout_height="120dp"
             android:src="@drawable/movie_default"
             android:scaleType="fitCenter"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"/>
 
         <LinearLayout
