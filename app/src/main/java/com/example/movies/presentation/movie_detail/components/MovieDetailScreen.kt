@@ -1,16 +1,15 @@
 package com.example.movies.presentation.movie_detail
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -28,42 +27,43 @@ fun MovieDetailScreen(
     val scaffoldState = rememberBackdropScaffoldState(BackdropValue.Revealed)
     val scrollState = rememberScrollState()
     val scope = rememberCoroutineScope()
-    BackdropScaffold(
-        scaffoldState = scaffoldState,
-        gesturesEnabled = false,
-        appBar = { },
-        backLayerContent = {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .verticalScroll(scrollState)
-                    .background(Color.Blue)
-            ) {
+
+    state.movie?.let { movie ->
+        BackdropScaffold(
+            scaffoldState = scaffoldState,
+            gesturesEnabled = true,
+            appBar = { },
+            backLayerContent = {
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current)
-                        .data(state.movie?.poster)
+                        .data(movie.poster)
                         .crossfade(true)
                         .build(),
                     placeholder = painterResource(R.drawable.movie_default),
                     contentDescription = null,
+                    contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .fillMaxWidth()
+                        .fillMaxSize()
                         .background(color = Color.Black)
+                        .verticalScroll(scrollState)
+                        .clickable {
+                            if (scaffoldState.isConcealed) {
+                                scope.launch {
+                                    scaffoldState.reveal()
+                                }
+                            }
+                        },
                 )
-            }
-        },
-        frontLayerElevation = 30.dp,
-        frontLayerShape = MaterialTheme.shapes.large,
-        frontLayerContent = {
-            state.movie?.let { movie ->
+            },
+            frontLayerShape = MaterialTheme.shapes.large,
+            frontLayerContent = {
                 FrontLayerScreen(movie)
             }
-
-        }
-    ){
-        if (scrollState.isScrollInProgress){
-            scope.launch {
-                scaffoldState.conceal()
+        ) {
+            if (scrollState.isScrollInProgress) {
+                scope.launch {
+                    scaffoldState.conceal()
+                }
             }
         }
     }
