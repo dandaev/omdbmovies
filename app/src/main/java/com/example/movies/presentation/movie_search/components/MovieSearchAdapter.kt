@@ -21,7 +21,7 @@ class MovieSearchAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieSearchViewHolder {
         val from = LayoutInflater.from(parent.context)
         val binding = SearchItemMovieBinding.inflate(from, parent, false)
-        return MovieSearchViewHolder(binding, parent.context, clickListener)
+        return MovieSearchViewHolder(binding, clickListener)
     }
 
     override fun getItemCount(): Int = movies.size
