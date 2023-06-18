@@ -2,20 +2,26 @@ package com.example.movies.presentation.movie_detail
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
+import com.example.movies.common.drawLeftLine
 import com.example.movies.common.shadow
 import com.example.movies.domain.model.MovieDetail
-import com.example.movies.presentation.ui.theme.LightBlue10
+import com.example.movies.presentation.ui.theme.*
 
 @ExperimentalMaterial3Api
 @Composable
@@ -27,48 +33,52 @@ fun MovieDetailScreen(
             .fillMaxSize()
     ) {
         state.movie?.let { movie ->
-            Column(
+            LazyColumn(
                 modifier = Modifier.fillMaxSize()
             )
             {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(350.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Image(
-                        painter = rememberAsyncImagePainter(
-                            model = ImageRequest.Builder(LocalContext.current)
-                                .data(movie.poster)
-                                .crossfade(true)
-                                .build()
-                        ),
-                        contentDescription = null,
-                        contentScale = ContentScale.Crop,
+                item {
+                    Box(
                         modifier = Modifier
-                            .fillMaxSize(),
-                    )
-                }
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .shadow(
-                            color = LightBlue10,
-                            offsetX = 0.dp,
-                            offsetY = -(30).dp,
-                            blurRadius = 30.dp
+                            .fillMaxWidth()
+                            .height(350.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Image(
+                            painter = rememberAsyncImagePainter(
+                                model = ImageRequest.Builder(LocalContext.current)
+                                    .data(movie.poster)
+                                    .crossfade(true)
+                                    .build()
+                            ),
+                            contentDescription = null,
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .fillMaxSize(),
                         )
-                        .padding(20.dp)
-
-                ) {
-                    HeaderItem(movie = movie)
-                    Spacer(modifier = Modifier.height(16.dp))
-                    ParticipantItem(movie = movie)
-                    Spacer(modifier = Modifier.height(16.dp))
-                    DescItem(desc = movie.plot)
+                    }
                 }
+                item {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .shadow(
+                                color = LightBlue10,
+                                offsetX = -(30).dp,
+                                offsetY = -(30).dp,
+                                blurRadius = 30.dp
+                            )
+                            .padding(20.dp)
 
+                    ) {
+                        HeaderItem(movie = movie)
+                        Spacer(modifier = Modifier.height(16.dp))
+                        ParticipantItem(movie = movie)
+                        Spacer(modifier = Modifier.height(16.dp))
+                        DescItem(desc = movie.plot)
+                    }
+
+                }
             }
 
         }
@@ -81,17 +91,14 @@ fun MovieDetailScreen(
 fun HeaderItem(
     movie: MovieDetail
 ) {
-    Box(
+    Row(
         modifier = Modifier
             .fillMaxWidth()
     ) {
         Column(
-            modifier = Modifier.align(Alignment.CenterStart)
+            modifier = Modifier.weight(6f)
         ) {
-            Text(
-                text = movie.title,
-                style = MaterialTheme.typography.displayMedium,
-            )
+            ResizebleTitleText(text = movie.title)
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = movie.year + " (${movie.country})",
@@ -105,13 +112,27 @@ fun HeaderItem(
         }
         Box(
             modifier = Modifier
-                .align(Alignment.CenterEnd)
+                .weight(2f)
                 .padding(10.dp)
         ) {
-            Text(
-                text = movie.imdbRating,
-                style = MaterialTheme.typography.displaySmall,
-                modifier = Modifier.align(Alignment.Center)
+            RatingCircleItem(
+                rating = movie.imdbRating,
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .size(70.dp)
+                    .clip(MaterialTheme.shapes.small)
+                    .background(
+                        brush = Brush.horizontalGradient(
+                            colors = listOf(
+                                LightBlue40,
+                                LightBlue10
+                            )
+                        )
+                    )
+                    .drawLeftLine(
+                        LightBlue10,
+                        10.dp
+                    )
             )
         }
     }
@@ -128,7 +149,7 @@ fun ParticipantItem(
     )
     Spacer(modifier = Modifier.height(8.dp))
     Text(
-        text = "Stars ${movie.actors}",
+        text = "Stars: ${movie.actors}",
         style = MaterialTheme.typography.bodyMedium,
         modifier = Modifier.fillMaxWidth()
     )
@@ -149,6 +170,44 @@ fun DescItem(
         style = MaterialTheme.typography.bodyMedium,
         modifier = Modifier.fillMaxWidth()
     )
+}
+
+@Composable
+fun ResizebleTitleText(
+    text: String
+) {
+    var fontSize = 32
+    var fontHeight = 40.0
+
+    if (text.length > 26) {
+        fontSize = 20
+        fontHeight = 20.0
+    }
+
+    Text(
+        text = text,
+        style = TextStyle(
+            fontFamily = montserratExtraBold,
+            fontSize = fontSize.sp,
+            lineHeight = fontHeight.sp,
+        ),
+    )
+}
+
+@Composable
+fun RatingCircleItem(
+    rating: String,
+    modifier: Modifier
+) {
+    Box(
+        modifier = modifier
+    ) {
+        Text(
+            text = rating,
+            style = MaterialTheme.typography.displaySmall,
+            modifier = Modifier.align(Alignment.Center)
+        )
+    }
 }
 
 @Preview
@@ -172,6 +231,8 @@ fun Preview() {
         "7.7",
         ""
     )
-    HeaderItem(movie = movieDetail)
+//    HeaderItem(movie = movieDetail)
+    RatingCircleItem(rating = "7.7", Modifier)
 }
+
 
