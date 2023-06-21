@@ -51,6 +51,10 @@ val Typography = Typography(
     headlineSmall = TextStyle(
         fontFamily = montserratBold,
         fontSize = 20.sp
+    ),
+    titleMedium = TextStyle(
+        fontFamily = montserratSemiBold,
+        fontSize = 16.sp
     )
 
 )
