@@ -13,11 +13,11 @@
 
 * Movie details screen(Version 1) *
 
-![](screenshots/MovieDetailsScreenshot.png)
+<img src="screenshots/MovieDetailsScreenshot.png" width="200" >
 
 
 * Movie search screen(Version 1) *
-![](screenshots/MovieSearchScreenshot.png)
 
+<img src="screenshots/MovieSearchScreenshot.png" width="200" >
 
 *other screens in development, coming soon...*
