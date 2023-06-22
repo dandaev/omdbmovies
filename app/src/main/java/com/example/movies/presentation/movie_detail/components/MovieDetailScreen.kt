@@ -303,18 +303,18 @@ fun LeftBlurRectangle(
                 .fillMaxHeight().align(Alignment.BottomCenter)
         ) {
 
-            Spacer(modifier = Modifier.height(85.dp))
-            Text(
-                text = year + " (${country})",
-                Modifier.vertical().rotate(-90f),
-                style = MaterialTheme.typography.titleMedium,
-            )
-            Spacer(modifier = Modifier.height(4.dp))
-            Icon(
-                modifier = Modifier.size(25.dp).rotate(-90f),
-                imageVector = Icons.Outlined.CalendarMonth,
-                contentDescription = ""
-            )
+            Spacer(modifier = Modifier.height(185.dp))
+//            Text(
+//                text = year + " (${country})",
+//                Modifier.vertical().rotate(-90f),
+//                style = MaterialTheme.typography.titleMedium,
+//            )
+//            Spacer(modifier = Modifier.height(4.dp))
+//            Icon(
+//                modifier = Modifier.size(25.dp).rotate(-90f),
+//                imageVector = Icons.Outlined.CalendarMonth,
+//                contentDescription = ""
+//            )
             Spacer(modifier = Modifier.height(25.dp))
             Text(
                 text = time,

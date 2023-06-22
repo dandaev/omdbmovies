@@ -11,4 +11,13 @@
 
 **Screenshots:**
 
-*in development, coming soon...*
+* Movie details screen(Version 1) *
+
+![](screenshots/MovieDetailsScreenshot.png)
+
+
+* Movie search screen(Version 1) *
+![](screenshots/MovieSearchScreenshot.png)
+
+
+*other screens in development, coming soon...*
